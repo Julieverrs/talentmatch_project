@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant Form</title>
+</head>
+<body>
+    <h1>Submit Applicant Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <button onclick="window.location.href='{% url 'job_posting_form' %}'">Go to Job Posting Form</button>
+    <button onclick="window.location.href='{% url 'match_selection' %}'">Go to Match Selection</button>
+    
+    {% if applicant %}
+        <!-- After submitting the applicant form, you can redirect to this link to view recommended jobs -->
+        <a href="{% url 'recommend_jobs_to_applicant' applicant_id=applicant.id %}">View Recommended Jobs</a>
+    {% else %}
+        <p>Please submit the form to get recommendations.</p>
+    {% endif %}
+</body>
+</html>

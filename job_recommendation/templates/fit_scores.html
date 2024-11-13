@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fit Scores</title>
+</head>
+<body>
+    <h1>Match Results</h1>
+    <p>Job Title: {{ result.job_title }}</p>
+    <p>Applicant Name: {{ result.applicant_name }}</p>
+    <p>Fit Score: {{ result.fit_score }}</p>
+    <p>Common Keywords: {{ result.common_keywords }}</p>
+    <br>
+    <button onclick="window.location.href='{% url 'job_posting_form' %}'">Go to Job Posting Form</button>
+    <button onclick="window.location.href='{% url 'applicant_form' %}'">Go to Applicant Form</button>
+    <button onclick="window.location.href='{% url 'match_selection' %}'">Go to Match Selection</button>
+    
+</body>
+</html>

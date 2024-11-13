@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match Selection</title>
+</head>
+<body>
+    <h1>Select Job Post and Applicant</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="job_post">Select Job Post:</label>
+        <select name="job_post" id="job_post">
+            {% for job in job_posts %}
+                <option value="{{ job.id }}">{{ job.title }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="applicant">Select Applicant:</label>
+        <select name="applicant" id="applicant">
+            {% for applicant in applicants %}
+                <option value="{{ applicant.id }}">{{ applicant.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Analyze</button>
+    </form>
+    <br>
+
+    {% if result %}
+        <!-- After analyzing, display the match result -->
+        <h2>Match Result</h2>
+        <p>Job Title: {{ result.job_title }}</p>
+        <p>Applicant Name: {{ result.applicant_name }}</p>
+        <p>Fit Score: {{ result.fit_score }}</p>
+        <p>Common Keywords: {{ result.common_keywords }}</p>
+    {% endif %}
+
+    <br>
+    <button onclick="window.location.href='{% url 'job_posting_form' %}'">Go to Job Posting Form</button>
+    <button onclick="window.location.href='{% url 'applicant_form' %}'">Go to Applicant Form</button>
+</body>
+</html>

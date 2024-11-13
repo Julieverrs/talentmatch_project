@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Recommendations</title>
+</head>
+<body>
+    <h1>Recommended Jobs for {{ applicant.name }}</h1>
+
+    {% if recommended_jobs %}
+        <ul>
+            {% for job in recommended_jobs %}
+                <li>
+                    <strong>{{ job.job_title }}</strong>
+                    <p>{{ job.job_description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recommended jobs found based on the skills provided.</p>
+    {% endif %}
+</body>
+</html>
